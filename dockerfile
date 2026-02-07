@@ -17,4 +17,6 @@ RUN poetry install --no-root
 
 COPY . .
 
-CMD [ "poetry", "run", "python", "main" ]
+RUN alembic revision autogenerate -m "create_tables" && alembic upgrade head
+
+CMD [ "poetry", "run", "python", "-m", "api.app" ]

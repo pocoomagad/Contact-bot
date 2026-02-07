@@ -2,9 +2,8 @@
 *.env
 .env
 
-#alembic migrations
-migrations
-alembic.ini
-
 #__pycache__ files
 __pycache__
+
+#alembic versions
+versions

@@ -13,8 +13,7 @@ class UserCreate(BaseModel):
     description: str | None
     age: int = Field(ge=14, gt=150)
     gender: Gender
-    geo: Any
-
+    
 class User(UserCreate):
     ...
 

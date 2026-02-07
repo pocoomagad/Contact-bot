@@ -1,11 +1,22 @@
 from fastapi import Request
-from sqlalchemy import Select
-from api.database.engine import Session
 
-class BaseRepository:
-    def __init__(self, session: Session, request: Request):
-        self.session = session
-        self.request = request
+from abc import ABC
 
-    def pagination(self, query: Select):
-        ...
+from pydantic import ConfigDict
+
+from typing import ClassVar
+
+from pathlib import Path
+import os
+
+from api.database.core import Session
+
+class BaseRepository(ABC):
+    def session():
+        return Session
+
+class ContactModel(BaseModel):
+    model_config: ClassVar[ConfigDict] = ConfigDict(
+        from_attributes=True
+    )
+    

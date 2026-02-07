@@ -9,9 +9,6 @@ from geoalchemy2.types import Geometry, WKBElement
 class UserModel(Base):
     __tablename__ = "users"
 
-    id: Mapped[int] = mapped_column(
-        BigInteger(), primary_key=True
-    )
     name: Mapped[str] 
     description: Mapped[str] 
     age: Mapped[int]

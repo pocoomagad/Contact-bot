@@ -27,6 +27,7 @@ class UserRepository(AbstractUserRepository, BaseRepository):
             select(UserModel)
             .filter_by(id=id)
         )
+        await session.commit()
         return result.scalars().all()
         
     async def select_users(self):
@@ -35,6 +36,7 @@ class UserRepository(AbstractUserRepository, BaseRepository):
                 select(UserModel)
             )
         )
+        await session.commit()
         return result.scalars().all()
 
     async def insert_user(self, id: int, data: dict) -> int:
@@ -46,6 +48,7 @@ class UserRepository(AbstractUserRepository, BaseRepository):
                 .returning(UserModel.id)
             )
         )
+        await session.commit()
         return result.scalar()
 
     async def update_user(self, id: int, data: dict) -> int:
@@ -57,4 +60,5 @@ class UserRepository(AbstractUserRepository, BaseRepository):
                 .returning(UserModel.id)
             )
         )    
+        await session.commit()
         return result.scalar()

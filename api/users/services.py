@@ -23,13 +23,13 @@ class UserService(AbstractUserService):
         self.repo = repo()
 
     async def get_user(self, id: int):
-        ...
+        return await self.repo.select_user_by_id()
 
     async def get_users(self):
-        ...
+        return await self.repo.select_users()
 
     async def create_user(self, id: int, data: dict):
-        ...
+        return await self.repo.insert_user()
 
     async def update_user(self, id: int, data: dict):
-        ...
+        return await self.repo.update_user()
